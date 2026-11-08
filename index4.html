@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ôn Thi LSVN - Công Cuộc Khai Phá Vùng Đất Đàng Trong</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #e2e8f0;
+            background: #050515;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Nền vũ trụ */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.15), transparent 40%),
+                radial-gradient(circle at 20% 70%, rgba(6, 182, 212, 0.15), transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(5, 5, 21, 1), rgba(2, 2, 8, 1));
+        }
+
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 40px 20px 20px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            border-radius: 20px;
+            color: #10b981;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: #ffffff;
+            text-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            font-size: 1rem;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Thẻ Glassmorphism */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(16, 185, 129, 0.4);
+            transform: translateY(-2px);
+        }
+
+        h2.section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.25rem;
+            color: #34d399;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(52, 211, 153, 0.2);
+            padding-bottom: 8px;
+        }
+
+        /* Timeline & Grids */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+            gap: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .grid-2col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .info-box {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .box-header {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: normal;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 8px;
+            line-height: 1.5;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+
+        li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: #34d399;
+            font-size: 0.8rem;
+        }
+
+        .highlight {
+            color: #fef08a;
+            font-weight: 500;
+        }
+
+        /* Mốc thời gian */
+        .year-badge {
+            display: inline-block;
+            background: rgba(6, 182, 212, 0.2);
+            color: #22d3ee;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-right: 6px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stars-container" id="stars"></div>
+
+    <header>
+        <div class="badge">Hồ Sơ Ôn Tập LSVN K12</div>
+        <h1>CÔNG CUỘC KHAI PHÁ VÙNG ĐẤT ĐÀNG TRONG</h1>
+        <p class="subtitle">Giáo thọ: TS. Phạm Thúc Vĩnh • Quá Trình Mở Rộng Lãnh Thổ (Thế Kỷ XVI - XVIII)</p>
+    </header>
+
+    <div class="container">
+
+        <!-- 1. BỐI CẢNH VÀ ĐỘNG LỰC -->
+        <div class="glass-card" style="border-left: 4px solid #10b981;">
+            <h2 class="section-title">📌 1. Bối Cảnh Và Động Lực Khai Phá</h2>
+            <div class="grid-2col">
+                <div class="info-box">
+                    <div class="box-header" style="color: #38bdf8;">
+                        <span>Lập Cơ Sở Tại Thuận - Quảng</span>
+                    </div>
+                    <ul>
+                        <li><span class="year-badge">1558</span> Nguyễn Hoàng vào trấn thủ Thuận Hóa, chiêu mộ dân khai khẩn lập làng xóm.</li>
+                        <li>Xung đột Trịnh - Nguyễn bùng nổ, đất nước bị chia cắt lấy sông Gianh làm ranh giới.</li>
+                    </ul>
+                </div>
+                <div class="info-box">
+                    <div class="box-header" style="color: #f59e0b;">
+                        <span>Động Lực Sinh Tồn</span>
+                    </div>
+                    <ul>
+                        <li>Địa bàn Thuận - Quảng ngắn hẹp, bị ép giữa núi và biển.</li>
+                        <li>Các chúa Nguyễn bắt buộc phải <span class="highlight">mở rộng lãnh thổ về phía Nam</span> để tạo thực lực kinh tế - quân sự đối đầu với Đàng Ngoài.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. TIẾN TRÌNH KHAI PHÁ VÀ XÁC LẬP CHỦ QUYỀN -->
+        <div class="glass-card">
+            <h2 class="section-title">🗺️ 2. Tiến Trình Khai Phá & Xác Lập Chủ Quyền</h2>
+            
+            <div class="grid-2col">
+                <!-- Duyên hải Nam Trung Bộ -->
+                <div class="info-box" style="border-top: 3px solid #06b6d4;">
+                    <div class="box-header" style="color: #22d3ee;">
+                        <span>Mở Rộng Duyên Hải Nam Trung Bộ</span>
+                    </div>
+                    <ul>
+                        <li><span class="year-badge">1611</span> Lập phủ Phú Yên.</li>
+                        <li><span class="year-badge">1653</span> Lập phủ Phan Rang.</li>
+                        <li><span class="year-badge">1693</span> Phần còn lại của Champa được sáp nhập vào bản đồ Đàng Trong.</li>
+                    </ul>
+                </div>
+
+                <!-- Khai phá Nam Bộ -->
+                <div class="info-box" style="border-top: 3px solid #a855f7;">
+                    <div class="box-header" style="color: #c084fc;">
+                        <span>Khai Phá Vùng Đất Nam Bộ (Thủy Chân Lạp)</span>
+                    </div>
+                    <ul>
+                        <li><strong>Di dân tự phát:</strong> Cư dân Việt từ Thuận - Quảng tiến vào Nam Bộ khai phá rừng lầy, lập xóm làng trồng lúa nước.</li>
+                        <li><strong>Ngoại giao & Quản lý:</strong> 
+                            <br>• <span class="year-badge">1620</span> Chúa Nguyễn gả công nữ Ngọc Vạn cho vua Chân Lạp.
+                            <br>• <span class="year-badge">1623</span> Đặt 2 trạm thu thuế tại Mô Xoài và Kas Koba (Sài Gòn) để quản lý an ninh, hộ khẩu.
+                        </li>
+                        <li><strong>Đóng góp Hoa kiều:</strong> <span class="year-badge">1679</span> Dương Ngạn Địch, Trần Thượng Xuyên, Mạc Cửu vào Nam Bộ khẩn hoang.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Các mốc xác lập chủ quyền nhà nước -->
+            <div class="info-box" style="margin-top: 20px; border-top: 3px solid #10b981;">
+                <div class="box-header" style="color: #34d399;">
+                    <span>Hoàn Thành Xác Lập Chủ Quyền Nhà Nước Ở Nam Bộ</span>
+                </div>
+                <ul>
+                    <li><span class="year-badge">1698</span> <span class="highlight">Nguyễn Hữu Cảnh</span> vào kinh lý và đặt <span class="highlight">Phủ Gia Định</span> — Mốc lịch sử xác lập chủ quyền hành chính chính thức của Đại Việt ở Nam Bộ.</li>
+                    <li><span class="year-badge">1708</span> Mạc Cửu chính thức dâng đất Hà Tiên cho chúa Nguyễn.</li>
+                    <li><span class="year-badge">1756</span> Nặc Nguyên xin hiến đất 2 phủ Tầm Bôn (Tân An) và Lôi Lạp (Gò Công) để tạ ơn chúa Nguyễn.</li>
+                    <li><span class="year-badge">1757</span> Nặc Tôn dâng đất Tầm Phong Long (vùng giữa sông Tiền và sông Hậu). Toàn bộ vùng đất Nam Bộ hoàn thành sáp nhập trọn vẹn vào bản đồ Đàng Trong.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 3. CHÍNH SÁCH RUỘNG ĐẤT & KINH TẾ - XÃ HỘI -->
+        <div class="glass-card">
+            <h2 class="section-title">🌾 3. Chính Sách Ruộng Đất & Kinh Tế - Xã Hội</h2>
+            
+            <div class="grid-2col">
+                <div class="info-box" style="border-top: 3px solid #f59e0b;">
+                    <div class="box-header" style="color: #fbbf24;">
+                        <span>Chính Sách "Bản Bức Tư Điền"</span>
+                    </div>
+                    <ul>
+                        <li>Cho phép <span class="highlight">tự do khai hoang</span>, công nhận quyền sở hữu tư nhân lâu dài.</li>
+                        <li>Miễn thuế 3 năm đầu, kích thích mạnh mẽ phong trào khẩn hoang trong nhân dân.</li>
+                    </ul>
+                </div>
+
+                <div class="info-box" style="border-top: 3px solid #ec4899;">
+                    <div class="box-header" style="color: #f472b6;">
+                        <span>Kinh Tế & Giao Thoa Văn Hóa</span>
+                    </div>
+                    <ul>
+                        <li>Nam Bộ trở thành <span class="highlight">vựa lúa lớn nhất Đàng Trong</span>.</li>
+                        <li>Xuất hiện nhiều thương cảng sầm uất: <em>Hội An, Cù Lao Phố, Mỹ Tho Đại Phố, Hà Tiên</em>.</li>
+                        <li>Tạo sự giao thoa, kết nối bền chặt giữa các cộng đồng cư dân Việt, Chăm, Khơ-me và Hoa.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Ý NGHĨA LỊCH SỬ -->
+        <div class="glass-card" style="border-left: 4px solid #34d399;">
+            <h2 class="section-title">⭐️ 4. Ý Nghĩa Lịch Sử (Kết Bài)</h2>
+            <p style="line-height: 1.6; color: #cbd5e1;">
+                • Việc khai phá Đàng Trong đã <span class="highlight">mở rộng không gian lãnh thổ Đại Việt gấp đôi</span>, giúp định hình bản đồ đất nước kéo dài trọn vẹn đến Mũi Cà Mau.
+                <br>• Tạo tiền đề và nền tảng cốt lõi cho sự nghiệp thống nhất quốc gia dưới thời Tây Sơn và vương triều Nguyễn sau này.
+            </p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Hồ Sơ Ôn Tập Lịch Sử Việt Nam • Thiết kế Giao diện Vũ trụ Ôn thi</p>
+    </footer>
+
+    <script>
+        // Tạo các ngôi sao ngẫu nhiên cho nền vũ trụ
+        const starsContainer = document.getElementById('stars');
+        const count = 120;
+        for (let i = 0; i < count; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            const size = Math.random() * 2.5 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.setProperty('--duration', `${Math.random() * 3 + 2}s`);
+            starsContainer.appendChild(star);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ôn Thi LSVN - Câu 3: Cải Cách Của Hồ Quý Ly</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #e2e8f0;
+            background: #050515;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Nền vũ trụ */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 30% 20%, rgba(245, 158, 11, 0.15), transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.15), transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(5, 5, 21, 1), rgba(2, 2, 8, 1));
+        }
+
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 40px 20px 20px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            border-radius: 20px;
+            color: #f59e0b;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.2);
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: #ffffff;
+            text-shadow: 0 0 20px rgba(245, 158, 11, 0.6);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            font-size: 1rem;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Thẻ Glassmorphism */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(245, 158, 11, 0.4);
+            transform: translateY(-2px);
+        }
+
+        h2.section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.25rem;
+            color: #fbbf24;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(251, 191, 36, 0.2);
+            padding-bottom: 8px;
+        }
+
+        /* Grid các lĩnh vực cải cách */
+        .grid-reform {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .reform-box {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .reform-header {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: normal;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 8px;
+            line-height: 1.5;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+
+        li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: #fbbf24;
+            font-size: 0.8rem;
+        }
+
+        .highlight {
+            color: #fef08a;
+            font-weight: 500;
+        }
+
+        /* Evaluaton Grid */
+        .grid-eval {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .grid-eval {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stars-container" id="stars"></div>
+
+    <header>
+        <div class="badge">Hồ Sơ Ôn Tập LSVN K12</div>
+        <h1>CÂU 3: CHÍNH SÁCH CẢI CÁCH CỦA HỒ QUÝ LY</h1>
+        <p class="subtitle">Giáo thọ: TS. Phạm Thúc Vĩnh • Cuộc Cải Cách Toàn Diện Cuối Thế Kỷ XIV - Đầu Thế Kỷ XV</p>
+    </header>
+
+    <div class="container">
+
+        <!-- I. MỞ BÀI -->
+        <div class="glass-card" style="border-left: 4px solid #f59e0b;">
+            <h2 class="section-title">📌 I. Mở Bài (Bối Cảnh & Xuất Phát Điểm)</h2>
+            <p style="line-height: 1.6; color: #cbd5e1;">
+                Cuối thế kỷ XIV, vương triều Trần khủng hoảng nghiêm trọng (sản xuất đình trệ, đói kém, bộ máy suy thoái) trước nguy cơ xâm lược từ nhà Minh. <span class="highlight">Hồ Quý Ly</span> nắm quyền triều đình, dời đô về Tây Đô (Thanh Hóa), lập ra nhà Hồ năm 1400 (quốc hiệu <strong>Đại Ngu</strong>) và tiến hành cuộc cải cách vô cùng toàn diện nhằm củng cố bộ máy tập quyền và nâng cao tiềm lực quốc gia.
+            </p>
+        </div>
+
+        <!-- II. NỘI DUNG CẢI CÁCH -->
+        <div class="glass-card">
+            <h2 class="section-title">⚡ II. Nội Dung Chính Sách Cải Cách</h2>
+            
+            <div class="grid-reform">
+
+                <!-- 1. Chính trị & Quân sự -->
+                <div class="reform-box" style="border-top: 3px solid #38bdf8;">
+                    <div class="reform-header" style="color: #38bdf8;">
+                        <span>1. Chính Trị & Quân Sự</span>
+                        <span class="tag" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8;">Bộ Máy & Quốc Phòng</span>
+                    </div>
+                    <ul>
+                        <li><strong>Chính trị - Hành chính:</strong> Bãi bỏ đặc quyền quý tộc tôn thất nhà Trần, chọn nho sĩ thực tài. Đặt quy chế hành chính địa phương và đẩy mạnh thi cử.</li>
+                        <li><strong>Quân sự & Binh chế:</strong> Định lại binh chế, chia quân đội thành các quân, đô, vệ.</li>
+                        <li><strong>Sổ hộ tịch:</strong> Kiểm kê nhân đinh trên toàn quốc để huy động quân số.</li>
+                        <li><strong>Cải tiến kỹ thuật & Phòng thủ:</strong> Chế tạo <span class="highlight">súng thần cơ (Hồ Nguyên Trừng)</span>, đóng thuyền chiến Cổ Lâu, xây thành Tây Đô, Đa Bang kiên cố.</li>
+                    </ul>
+                </div>
+
+                <!-- 2. Kinh tế & Tài chính -->
+                <div class="reform-box" style="border-top: 3px solid #f59e0b;">
+                    <div class="reform-header" style="color: #f59e0b;">
+                        <span>2. Kinh Tế & Tài Chính</span>
+                        <span class="tag" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;">Tài Sản & Tiền Tệ</span>
+                    </div>
+                    <ul>
+                        <li><strong>Chính sách Hạn điền (1397):</strong> Quy định sở hữu ruộng tư tối đa (trừ Đại vương & Trưởng công chúa, còn lại không quá 10 mẫu), thu lại ruộng thừa. Giáng đòn mạnh vào kinh tế điền trang quý tộc Trần.</li>
+                        <li><strong>Chính sách Hạn nô (1401):</strong> Hạn chế số gia nô quý tộc, số nô tỳ thừa sung công.</li>
+                        <li><strong>Phát hành tiền giấy (1396):</strong> Ban hành <span class="highlight">Thông bảo hội sao</span>, thu gom tiền đồng trong dân để đúc vũ khí.</li>
+                        <li><strong>Cải cách thuế khóa (1402):</strong> Thuế đinh và thuế điền lũy tiến (người ít ruộng nộp nhẹ, không ruộng miễn thuế đinh).</li>
+                    </ul>
+                </div>
+
+                <!-- 3. Văn hóa & Giáo dục -->
+                <div class="reform-box" style="border-top: 3px solid #a855f7;">
+                    <div class="reform-header" style="color: #c084fc;">
+                        <span>3. Văn Hóa & Giáo Dục</span>
+                        <span class="tag" style="background: rgba(192, 132, 252, 0.15); color: #c084fc;">Tư Thưởng & Chữ Nôm</span>
+                    </div>
+                    <ul>
+                        <li><strong>Giáo dục & Thi cử:</strong> Định lại quy chế thi cử (đặt kỳ thi Hương 1396, thi Thái học sinh, thi viết chữ, thi toán). Mở rộng trường học xuống châu, phủ, lộ và cấp học điền.</li>
+                        <li><strong>Đề cao chữ Nôm:</strong> Cho dịch sách <em>Kinh Thi</em> ra chữ Nôm để phổ biến.</li>
+                        <li><strong>Chấn chỉnh tôn giáo:</strong> Bắt nhà sư dưới 50 tuổi hoàn tục hoặc sát hạch kinh giáo. Đề cao Nho giáo thực dụng, bài trừ giáo điều.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- III. ĐÁNH GIÁ CUỘC CẢI CÁCH -->
+        <div class="glass-card">
+            <h2 class="section-title">📊 III. Đánh Giá Cuộc Cải Cách</h2>
+            
+            <div class="grid-eval">
+                
+                <div class="reform-box" style="border-top: 3px solid #4ade80;">
+                    <div class="reform-header" style="color: #4ade80;">
+                        <span>👍 Giá Trị & Ý Nghĩa Tích Cực</span>
+                    </div>
+                    <ul>
+                        <li>Cuộc cải cách mang tính <span class="highlight">toàn diện, tiến bộ và đúng hướng</span>.</li>
+                        <li>Loại bỏ chế độ quân chủ quý tộc dựa trên điền trang thái ấp, chuyển sang chế độ <span class="highlight">quân chủ quan liêu tập quyền</span>.</li>
+                        <li>Bước đầu giải quyết mâu thuẫn kinh tế - xã hội, nâng cao tiềm lực quốc phòng và đề cao tinh thần dân tộc.</li>
+                    </ul>
+                </div>
+
+                <div class="reform-box" style="border-top: 3px solid #f43f5e;">
+                    <div class="reform-header" style="color: #f43f5e;">
+                        <span>⚠️ Hạn Chế & Nguyên Nhân Thất Bại</span>
+                    </div>
+                    <ul>
+                        <li>Chính sách hạn điền, hạn nô thực hiện chưa triệt để; tiền giấy chưa phù hợp tâm lý cư dân nên không đạt hiệu quả.</li>
+                        <li>Phương pháp độc đoán, vội vã, vấp phải sự phản kháng của quý tộc Trần và <span class="highlight">chưa thu phục được lòng dân</span>.</li>
+                        <li>Khi quân Minh xâm lược (1406 - 1407), nhà Hồ không quy tụ được khối đại đoàn kết toàn dân nên nhanh chóng thất bại.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- IV. KẾT BÀI -->
+        <div class="glass-card" style="border-left: 4px solid #4ade80;">
+            <h2 class="section-title">⭐️ IV. Kết Bài (Tổng Kết)</h2>
+            <p style="line-height: 1.6; color: #cbd5e1;">
+                Dù thất bại do không thu phục được lòng dân trước họa ngoại xâm, cuộc cải cách của Hồ Quý Ly vẫn là một <strong>hiện tượng lịch sử đặc sắc</strong>. Nó thể hiện tư duy đổi mới, tinh thần tự cường và quyết tâm cải biến đất nước của một nhà cải cách đại tài trong tiến trình lịch sử Việt Nam.
+            </p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Hồ Sơ Ôn Tập Lịch Sử Việt Nam • Thiết kế Giao diện Vũ trụ Ôn thi</p>
+    </footer>
+
+    <script>
+        // Tạo các ngôi sao ngẫu nhiên cho nền vũ trụ
+        const starsContainer = document.getElementById('stars');
+        const count = 120;
+        for (let i = 0; i < count; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            const size = Math.random() * 2.5 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.setProperty('--duration', `${Math.random() * 3 + 2}s`);
+            starsContainer.appendChild(star);
+        }
+    </script>
+</body>
+</html>

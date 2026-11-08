@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ôn Thi LSVN - Câu 1: Tiến Trình Lịch Sử Việt Nam</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #e2e8f0;
+            background: #050515;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Hiệu ứng nền vũ trụ */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(112, 0, 255, 0.15), transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(0, 212, 255, 0.15), transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(5, 5, 21, 1), rgba(2, 2, 8, 1));
+        }
+
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 40px 20px 20px;
+            position: relative;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.4);
+            border-radius: 20px;
+            color: #00d4ff;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            color: #ffffff;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            font-size: 1rem;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Thẻ Glassmorphism */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(0, 212, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        h2.section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            color: #38bdf8;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+            padding-bottom: 8px;
+        }
+
+        /* Timeline Table */
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        th {
+            background: rgba(0, 212, 255, 0.15);
+            color: #38bdf8;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        /* Timeline Steps */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin-top: 15px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #38bdf8, #818cf8, #c084fc);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -25px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #38bdf8;
+            box-shadow: 0 0 10px #38bdf8;
+        }
+
+        .period-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #f1f5f9;
+            margin-bottom: 6px;
+        }
+
+        .period-time {
+            display: inline-block;
+            font-size: 0.85rem;
+            color: #818cf8;
+            background: rgba(129, 140, 248, 0.1);
+            padding: 2px 8px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 5px;
+        }
+
+        li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 6px;
+            line-height: 1.5;
+            color: #cbd5e1;
+        }
+
+        li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: #38bdf8;
+            font-size: 0.8rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stars-container" id="stars"></div>
+
+    <header>
+        <div class="badge">Hồ Sơ Ôn Tập LSVN K12</div>
+        <h1>CÂU 1: TIẾN TRÌNH LỊCH SỬ VIỆT NAM</h1>
+        <p class="subtitle">Giáo thọ: TS. Phạm Thúc Vĩnh • Tóm tắt trọng tâm thi cử</p>
+    </header>
+
+    <div class="container">
+
+        <!-- BẢNG TỔNG QUAN -->
+        <div class="glass-card">
+            <h2 class="section-title">🚀 5 Thời Kỳ Lịch Sử Trọng Tâm</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Thời kỳ</th>
+                            <th>Mốc Thời gian (Ước tính)</th>
+                            <th>Ghi chú chính</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1. Nguyên thủy & Cổ đại</strong></td>
+                            <td>Từ dấu vết con người đến 179 TCN</td>
+                            <td>Văn Lang - Âu Lạc - Chăm Pa - Phù Nam</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2. Bắc thuộc & Đấu tranh</strong></td>
+                            <td>179 TCN – 938 SCN</td>
+                            <td>Hơn 1000 năm bị đô hộ; Bạch Đằng 938 giành độc lập</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3. Phong kiến (Trung đại)</strong></td>
+                            <td>938 – 1858</td>
+                            <td>Nhà Ngô - Đinh - Tiền Lê - Lý - Trần - Hồ - Lê Sơ - Nguyễn</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4. Cận đại</strong></td>
+                            <td>1858 – 1945</td>
+                            <td>Kháng Pháp; ĐCSVN ra đời (1930); Cách mạng Tháng Tám (1945)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5. Hiện đại</strong></td>
+                            <td>1945 – nay</td>
+                            <td>Kháng chiến chống Pháp, Mỹ; Thống nhất & Đổi mới (1986)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- DIỄN GIẢI CHI TIẾT -->
+        <div class="glass-card">
+            <h2 class="section-title">🌌 Chi Tiết Tiến Trình Lịch Sử</h2>
+            
+            <div class="timeline">
+
+                <!-- Thời kỳ 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="period-title">1. Thời Nguyên thủy & Cổ đại</div>
+                    <div class="period-time">Từ dấu vết đầu tiên đến năm 179 TCN</div>
+                    <ul>
+                        <li><strong>Thời nguyên thủy:</strong> Văn hóa Sơn Vi (Đá cũ), Hòa Bình, Bắc Sơn (Đá mới). Chuyển từ săn bắt, hái lượm sang nông nghiệp sơ khai.</li>
+                        <li><strong>Văn Lang - Âu Lạc:</strong> Kỹ thuật luyện kim (đồng thau, sắt) gắn liền văn hóa Đông Sơn. Nhà nước Văn Lang (Vua Hùng) và Âu Lạc (An Dương Vương).</li>
+                        <li><strong>Các quốc gia cổ khác:</strong> Chăm Pa (văn hóa Sa Huỳnh) và Phù Nam (văn hóa Óc Eo) ở miền Trung và miền Nam.</li>
+                    </ul>
+                </div>
+
+                <!-- Thời kỳ 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="background: #818cf8; box-shadow: 0 0 10px #818cf8;"></div>
+                    <div class="period-title">2. Thời kỳ Bắc thuộc và đấu tranh giành độc lập</div>
+                    <div class="period-time">179 TCN – 938 SCN</div>
+                    <ul>
+                        <li><strong>Chính sách đô hộ:</strong> Sau thất bại An Dương Vương (179 TCN), rơi vào hơn 1.000 năm bị các triều đại phương Bắc đô hộ và thực hiện chính sách Hán hóa.</li>
+                        <li><strong>Các cuộc khởi nghĩa lớn:</strong> Hai Bà Trưng (40), Lý Bôn (542), Mai Thúc Loan (722), Phùng Hưng (776), Khúc Thừa Dụ (905).</li>
+                        <li><strong>Bước ngoặt lịch sử:</strong> Chiến thắng Bạch Đằng năm 938 của Ngô Quyền đánh tan quân Nam Hán, mở ra kỷ nguyên độc lập tự chủ lâu dài.</li>
+                    </ul>
+                </div>
+
+                <!-- Thời kỳ 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="background: #c084fc; box-shadow: 0 0 10px #c084fc;"></div>
+                    <div class="period-title">3. Thời kỳ Phong kiến (Trung đại)</div>
+                    <div class="period-time">938 – 1858</div>
+                    <ul>
+                        <li><strong>Củng cố chính quyền (Thế kỷ X):</strong> Các nhà Ngô, Đinh, Tiền Lê khẳng định chủ quyền.</li>
+                        <li><strong>Phát triển đỉnh cao (Thế kỷ XI - XV):</strong> 
+                            <br>• Lý - Trần - Hồ (1010 - 1407): Lý Công Uẩn dời đô về Thăng Long (1010); 3 lần thắng quân Nguyên - Mông.
+                            <br>• Lê Sơ (1428 - 1527): Khởi nghĩa Lam Sơn (Lê Lợi); Vua Lê Thánh Tông đưa Đại Việt đạt đỉnh cao (Bộ luật Hồng Đức).
+                        </li>
+                        <li><strong>Khủng hoảng & Khai phá (Thế kỷ XVI - XVIII):</strong> Nam - Bắc triều (Lê - Mạc), Trịnh - Nguyễn phân tranh. Chúa Nguyễn mở rộng Đàng Trong. Phong trào Tây Sơn (Nguyễn Huệ) lật đổ cát cứ, quét sạch xâm lược Xiêm, Thanh.</li>
+                        <li><strong>Triều Nguyễn (1802 - 1945):</strong> Triều đại phong kiến cuối cùng.</li>
+                    </ul>
+                </div>
+
+                <!-- Thời kỳ 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="background: #f43f5e; box-shadow: 0 0 10px #f43f5e;"></div>
+                    <div class="period-title">4. Thời kỳ Cận đại</div>
+                    <div class="period-time">1858 – 1945</div>
+                    <ul>
+                        <li><strong>Pháp xâm lược (1858):</strong> Nổ súng tại Đà Nẵng, biến Việt Nam thành thuộc địa. Các phong trào Cần Vương, Yên Thế, Duy Tân bùng nổ.</li>
+                        <li><strong>Bước ngoặt cách mạng:</strong> Năm 1930, Đảng Cộng sản Việt Nam ra đời do Nguyễn Ái Quốc sáng lập.</li>
+                        <li><strong>Thành tựu:</strong> Cách mạng tháng Tám 1945 thành công, khai sinh nước Việt Nam Dân chủ Cộng hòa (2/9/1945).</li>
+                    </ul>
+                </div>
+
+                <!-- Thời kỳ 5 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="background: #4ade80; box-shadow: 0 0 10px #4ade80;"></div>
+                    <div class="period-title">5. Thời kỳ Hiện đại</div>
+                    <div class="period-time">1945 – Nay</div>
+                    <ul>
+                        <li><strong>Kháng chiến chống Pháp (1945 - 1954):</strong> Kết thúc bằng chiến thắng Điện Biên Phủ 1954 "chấn động địa cầu".</li>
+                        <li><strong>Kháng chiến chống Mỹ (1954 - 1975):</strong> Tổng tiến công và nổi dậy Mùa Xuân 1975 (Chiến dịch Hồ Chí Minh) giải phóng hoàn toàn miền Nam, thống nhất đất nước.</li>
+                        <li><strong>Thời kỳ quá độ & Đổi mới (1975 - nay):</strong> Từ Đại hội VI (1986), đề ra đường lối Đổi mới, phát triển kinh tế thị trường định hướng XHCN.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- KẾT LUẬN -->
+        <div class="glass-card" style="border-left: 4px solid #38bdf8;">
+            <h2 class="section-title">⭐️ Kết Luận Trọng Tâm</h2>
+            <p style="line-height: 1.6; color: #cbd5e1;">
+                Tiến trình lịch sử Việt Nam nổi bật với tinh thần yêu nước, ý chí tự lập tự cường và sức sống bền bỉ qua mọi thử thách. Từ các bộ tộc sông Hồng đến quốc gia độc lập hiện đại, hiểu rõ 5 thời kỳ này giúp bạn làm tốt mọi dạng câu hỏi bài thi!
+            </p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Hồ Sơ Ôn Tập Lịch Sử Việt Nam • Thiết kế Giao diện Vũ trụ Ôn thi</p>
+    </footer>
+
+    <script>
+        // Tạo các ngôi sao ngẫu nhiên cho nền vũ trụ
+        const starsContainer = document.getElementById('stars');
+        const count = 120;
+        for (let i = 0; i < count; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            const size = Math.random() * 2.5 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.setProperty('--duration', `${Math.random() * 3 + 2}s`);
+            starsContainer.appendChild(star);
+        }
+    </script>
+</body>
+</html>
